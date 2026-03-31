@@ -51,10 +51,6 @@ create type fatura_forma_pagamento_enum as enum ('PIX','CREDITO','DEBITO','BOLET
 
 create type leito_status_enum as enum ('OCUPADO','LIVRE','MANUTENCAO');
 
---CRIANDO ENUM TELEFONE--
-
-create type tipo_telefone_enum as enum ('CELULAR','FIXO','COMERCIAL','WHATSAPP','RECADO');
-
 --CRIANDO ENUM ESPECIALIDADE--
 
 create type especialidade_medico_enum as enum ('CARDIOLOGISTA','DERMATOLOGISTA','NEUROLOGISTA');
@@ -121,7 +117,9 @@ foreign key (id_cep) references cep(id));
 
 create table hospital (id serial primary key,
 nome varchar (100) not null,
-cnpj varchar (14) unique, 
+cnpj varchar (14) unique,
+telefone char (11),
+telefone_fixo char (11) default null,
 id_endereco int,
 foreign key (id_endereco) references endereco(id));
 
@@ -132,6 +130,8 @@ nome varchar (100) not null,
 especialidade especialidade_medico_enum,
 crm varchar(20) unique not null,
 id_endereco int,
+telefone char (11),
+telefone_fixo char (11) default null,
 foreign key (id_endereco) references endereco(id));
 
 --CRIANDO PLANO DE SAÚDE--
@@ -140,6 +140,8 @@ create table plano_saude (id serial primary key,
 nome varchar(100)unique,
 cobertura cobertura_enum,
 id_endereco int,
+telefone char (11),
+telefone_fixo char (11) default null,
 foreign key (id_endereco) references endereco(id));
 
 --CRIANDO PACIENTE--
@@ -149,6 +151,8 @@ nome varchar (100) not null ,
 cpf varchar (11) unique not null,
 id_endereco int,
 id_plano_saude int default null,
+telefone char (11),
+telefone_fixo char (11) default null,
 foreign key (id_endereco) references endereco(id),
 foreign key (id_plano_saude) references plano_saude(id));
 
@@ -180,23 +184,6 @@ id_endereco int,
 foreign key (id_chefe) references enfermeira(id),
 foreign key (id_ala) references ala(id),
 foreign key (id_endereco) references endereco(id));
-
---CRIANDO TELEFONE--
-
-create table telefone (id serial primary key,
-numero varchar(15)unique,
-tipo tipo_telefone_enum,
-principal boolean,
-observacao varchar(100),
-id_medico int,
-id_hospital int,
-id_plano_saude int,
-id_paciente int,
-foreign key (id_medico) references medico(id),
-foreign key (id_hospital) references hospital(id),
-foreign key (id_plano_saude) references plano_saude(id),
-foreign key (id_paciente) references paciente(id));
-
 
 --CRIANDO INTERNACAO--
 
@@ -271,4 +258,19 @@ id_plano_saude int,
 foreign key (id_hospital) references hospital(id),
 foreign key (id_plano_saude) references plano_saude(id));
 
+--CRIANDO TELEFONE--
+
+/*create table telefone (id serial primary key,
+numero varchar(15)unique,
+tipo tipo_telefone_enum,
+principal boolean,
+observacao varchar(100),
+id_medico int,
+id_hospital int,
+id_plano_saude int,
+id_paciente int,
+foreign key (id_medico) references medico(id),
+foreign key (id_hospital) references hospital(id),
+foreign key (id_plano_saude) references plano_saude(id),
+foreign key (id_paciente) references paciente(id));*/
 

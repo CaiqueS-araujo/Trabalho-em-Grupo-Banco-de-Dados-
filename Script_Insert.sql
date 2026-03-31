@@ -42,36 +42,58 @@ INSERT INTO endereco (cep, numero, complemento, id_cep) VALUES
 ('60000009', '90', 'Lote 5', 9), ('70000010', '100', 'Cobertura', 10);
 
 -- HOSPITAL
-INSERT INTO hospital (nome, cnpj, id_endereco) VALUES 
-('Hosp. Central', '11111111000101', 1), ('Hosp. Vida', '22222222000102', 2),
-('Hosp. Santa', '33333333000103', 3), ('Hosp. Norte', '44444444000104', 4),
-('Hosp. Sul', '55555555000105', 5), ('Hosp. Oeste', '66666666000106', 6),
-('Hosp. Leste', '77777777000107', 7), ('Hosp. Geral', '88888888000108', 8),
-('Hosp. Pronto', '99999999000109', 9), ('Hosp. Kids', '00000000000110', 10);
+INSERT INTO hospital (nome, cnpj, telefone, telefone_fixo, id_endereco) VALUES
+('Hospital Santa Luzia', '12345678000101', '11988887777', '1133334444', 1),
+('Clínica São José', '23456789000102', '21977776666', '2122223333', 2),
+('Centro Médico Horizonte', '34567890000103', '31966665555', '3144445555', 3),
+('Hospital do Ceará', '45678901000104', '85955554444', '8533332222', 4),
+('Unidade Central DF', '56789012000105', '61944443333', '6133330000', 5),
+('Hospital das Nações', '67890123000106', '41933332222', '4132323232', 6),
+('Pronto Socorro Sul', '78901234000107', '51922221111', '5130303030', 7),
+('Hospital Bahia Geral', '89012345000108', '71911110000', '7136363636', 8),
+('Hospital de São Luís', '90123456000109', '98900009999', '9832321111', 9),
+('Recife Medical Center', '01234567000110', '81999998888', '8134345555', 10);
 
 -- PLANO DE SAUDE
-INSERT INTO plano_saude (nome, cobertura, id_endereco) VALUES
-('Amil', 'NACIONAL', 1), ('Unimed', 'REGIONAL', 2), ('Bradesco', 'NACIONAL', 3),
-('SulAmerica', 'NACIONAL', 4), ('Hapvida', 'REGIONAL', 5), ('Golden', 'REGIONAL', 6),
-('NotreDame', 'NACIONAL', 7), ('Porto', 'NACIONAL', 8), ('Allianz', 'NACIONAL', 9),
-('Prevent', 'REGIONAL', 10);
+INSERT INTO plano_saude (nome, cobertura, id_endereco, telefone, telefone_fixo) VALUES
+('Amil Assistência', 'NACIONAL', 1, '11912341234', '1130031000'),
+('Unimed Central', 'ESTADUAL', 2, '21988887777', '2140040001'),
+('Bradesco Saúde', 'NACIONAL', 3, '31977776666', '3132223333'),
+('SulAmérica Saúde', 'NACIONAL', 4, '85966665555', '8534005000'),
+('Hapvida Assistência', 'REGIONAL', 5, '61955554444', '6140028922'),
+('Porto Seguro Saúde', 'ESTADUAL', 6, '41944443333', '4133332222'),
+('Golden Cross', 'NACIONAL', 7, '51933332222', '5132114455'),
+('Intermédica Notredame', 'REGIONAL', 8, '71922221111', '7130302020'),
+('Samed Saúde', 'ESTADUAL', 9, '98911110000', '9832219090'),
+('Care Plus', 'NACIONAL', 10, '81900009999', '8134218877');
 
 -- MEDICO
-INSERT INTO medico (nome, especialidade, crm, id_endereco) VALUES
-('Dr. João', 'CARDIOLOGISTA', '111', 1), ('Dra. Ana', 'DERMATOLOGISTA', '222', 2),
-('Dr. Luis', 'NEUROLOGISTA', '333', 3), ('Dra. Bia', 'CARDIOLOGISTA', '444', 4),
-('Dr. Edu', 'NEUROLOGISTA', '555', 5), ('Dra. Mel', 'DERMATOLOGISTA', '666', 6),
-('Dr. Leo', 'CARDIOLOGISTA', '777', 7), ('Dra. Ceu', 'NEUROLOGISTA', '888', 8),
-('Dr. Tom', 'DERMATOLOGISTA', '999', 9), ('Dra. Liz', 'CARDIOLOGISTA', '000', 10);
+INSERT INTO medico (nome, especialidade, crm, id_endereco, telefone, telefone_fixo) VALUES
+('Dr. Ricardo Arantes', 'CARDIOLOGIA', 'CRM/SP 123456', 1, '11911112222', '1133334444'),
+('Dra. Helena Souza', 'PEDIATRIA', 'CRM/RJ 234567', 2, '21922223333', '2122223333'),
+('Dr. Carlos Magno', 'ORTOPEDIA', 'CRM/MG 345678', 3, '31933334444', '3144445555'),
+('Dra. Beatriz Luz', 'DERMATOLOGIA', 'CRM/CE 456789', 4, '85944445555', '8533332222'),
+('Dr. André Volpi', 'GINECOLOGIA', 'CRM/DF 567890', 5, '61955556666', '6133330000'),
+('Dra. Mariana Rios', 'NEUROLOGIA', 'CRM/PR 678901', 6, '41966667777', '4132323232'),
+('Dr. Roberto Freire', 'PSIQUIATRIA', 'CRM/RS 789012', 7, '51977778888', '5130303030'),
+('Dra. Luciana Melo', 'OFTALMOLOGIA', 'CRM/BA 890123', 8, '71988889999', '7136363636'),
+('Dr. Fernando Costa', 'UROLOGIA', 'CRM/MA 901234', 9, '98999990000', '9832321111'),
+('Dra. Patrícia Silva', 'CLINICA_GERAL', 'CRM/PE 012345', 10, '81912345678', '8134345555');
 
 -- 3. Pacientes e Unidades Internas -------------------------------------------------------
 
 -- PACIENTE (Alguns com plano, outros sem)
-INSERT INTO paciente (nome, cpf, id_endereco, id_plano_saude) VALUES
-('Carlos', '111', 1, 1), ('Maria', '222', 2, 2), ('Jose', '333', 3, NULL),
-('Paula', '444', 4, 4), ('Beto', '555', 5, NULL), ('Rute', '666', 6, 6),
-('Zeca', '777', 7, 7), ('Nair', '888', 8, NULL), ('Igor', '999', 9, 9),
-('Vera', '000', 10, 10);
+INSERT INTO paciente (nome, cpf, id_endereco, id_plano_saude, telefone, telefone_fixo) VALUES
+('João da Silva Santos', '12345678901', 1, 1, '11912345678', '1133221100'),
+('Maria Oliveira Souza', '23456789012', 2, 2, '21987654321', '2122334455'),
+('Antônio Ferreira Lima', '34567890123', 3, 3, '31991112222', '3134445555'),
+('Francisca das Chagas', '45678901234', 4, 4, '85988887777', '8532324040'),
+('Paulo Roberto Gomes', '56789012345', 5, 5, '61977776666', '6133332211'),
+('Ana Paula Ribeiro', '67890123456', 6, 6, '41966665555', '4132320011'),
+('Luiz Fernando Costa', '78901234567', 7, 7, '51955554444', '5130309090'),
+('Tereza Cristina Melo', '89012345678', 8, 8, '71944443333', '7136368080'),
+('Sebastião José Alencar', '90123456789', 9, 9, '98933332222', '9832214040'),
+('Cláudia Raia Pontes', '01234567890', 10, 10, '81922221111', '8134215050');
 
 
 -- ALA
@@ -172,19 +194,6 @@ INSERT INTO fatura (
 (120.00, 'PAGO', 'CREDITO', '2026-03-25', '2026-03-25', 9, 9, NULL),
 (2000.00, 'PAGO', 'PIX', '2026-03-28', '2026-03-28', 10, 10, NULL);
 
--- TELEFONE
-INSERT INTO telefone (numero, tipo, principal, id_paciente, id_medico) VALUES
-('1199000111', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 0), NULL),
-('1133002222', 'FIXO', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 1), NULL),
-('1198888333', 'WHATSAPP', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 2), NULL),
-('2199000444', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 3), NULL),
-('2133005555', 'COMERCIAL', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 0)),
-('3199000666', 'CELULAR', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 1)),
-('3133007777', 'FIXO', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 2)),
-('4199000888', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 4), NULL),
-('5199000999', 'WHATSAPP', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 3)),
-('6199000000', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 5), NULL);
-
 
 INSERT INTO medicamento_prescricao (dosagem, observacao, id_medicamento, id_prescricao) VALUES
 (500, 'Tomar após as refeições', 1, 1),  -- Dipirona na Prescrição 1
@@ -223,3 +232,17 @@ SET
         ELSE NULL 
     END
 WHERE id BETWEEN 1 AND 10;
+
+
+/*-- TELEFONE
+INSERT INTO telefone (numero, tipo, principal, id_paciente, id_medico) VALUES
+('1199000111', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 0), NULL),
+('1133002222', 'FIXO', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 1), NULL),
+('1198888333', 'WHATSAPP', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 2), NULL),
+('2199000444', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 3), NULL),
+('2133005555', 'COMERCIAL', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 0)),
+('3199000666', 'CELULAR', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 1)),
+('3133007777', 'FIXO', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 2)),
+('4199000888', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 4), NULL),
+('5199000999', 'WHATSAPP', true, NULL, (SELECT id FROM medico ORDER BY id LIMIT 1 OFFSET 3)),
+('6199000000', 'CELULAR', true, (SELECT id FROM paciente ORDER BY id LIMIT 1 OFFSET 5), NULL);*/

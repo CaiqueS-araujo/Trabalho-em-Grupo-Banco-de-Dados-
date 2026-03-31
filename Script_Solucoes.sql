@@ -17,7 +17,7 @@ select * from  exame_laudo;
 
 --Update realizado para alterar a data de resultado, onde no arquivo seria selecionado o upload do pdf
 update exame_laudo 
-set data_resultado = '2026-04-20 10:50:04.798'
+set data_resultado = '2026-05-20 10:50:04.798'
 where id=3;
 
 -- ==============================================================================
@@ -34,13 +34,10 @@ where id=4;
 */
 -- Select conforme solicitado
 select
-    m.nome as medico,
-    t.numero as telefone,
-    t.tipo
-from medico m
-inner join telefone t 
-on m.id = t.id_medico
-where m.especialidade = 'CARDIOLOGISTA';
+    nome as medico,
+    telefone
+from medico
+where especialidade = 'CARDIOLOGISTA';
 
 -- ==============================================================================
 /* Pacientes e Planos de Saúde
@@ -180,7 +177,6 @@ inner join plano_saude ps
 where extract(year from f.data_emissao) = 2026
 group by ps.nome
 order by total_faturado desc; 
-
 
 
 -- ==============================================================================
