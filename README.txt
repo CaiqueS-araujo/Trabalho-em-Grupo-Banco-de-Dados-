@@ -136,10 +136,6 @@ Este projeto foi desenvolvido para praticar os principais conceitos de banco de 
 # 👨‍💻 Desenvolvedor
 
 * Caique Simões de Araújo
-* Juliano Coelho
-* Rayla Martins
-* Leonardo de Mattos Veiga
-* Emily Neves da Silva
 
 ---
 
